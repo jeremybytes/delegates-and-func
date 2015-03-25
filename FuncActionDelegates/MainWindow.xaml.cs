@@ -7,7 +7,8 @@ namespace FuncActionDelegates
 {
     public partial class MainWindow : Window
     {
-        PersonFormat formatPerson;
+        //PersonFormat formatPerson;
+        Func<Person, string> formatPerson;
 
         public MainWindow()
         {
@@ -18,13 +19,13 @@ namespace FuncActionDelegates
         public void AssignDelegate()
         {
             if (Option1Button.IsChecked.Value)
-                formatPerson = Formatters.Default;
+                formatPerson = p => p.ToString();
             else if (Option2Button.IsChecked.Value)
-                formatPerson = Formatters.LastNameToUpper;
+                formatPerson = p => p.LastName.ToUpper();
             else if (Option3Button.IsChecked.Value)
-                formatPerson = Formatters.FirstNameToLower;
+                formatPerson = p => p.FirstName.ToLower();
             else if (Option4Button.IsChecked.Value)
-                formatPerson = Formatters.FullName;
+                formatPerson = p => string.Format("{0}, {1}", p.LastName, p.FirstName);
         }
 
         private void ProcessDataButton_Click(object sender, RoutedEventArgs e)
