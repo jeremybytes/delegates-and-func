@@ -30,6 +30,8 @@ namespace FuncActionDelegates
         }
     }
 
+    public delegate string PersonFormat(Person input);
+
     public class Person
     {
         public string FirstName { get; set; }
@@ -40,6 +42,13 @@ namespace FuncActionDelegates
         public override string ToString()
         {
             return string.Format("{0} {1}", FirstName, LastName);
+        }
+
+        public string ToString(PersonFormat format)
+        {
+            if (format != null)
+                return format(this);
+            return this.ToString();
         }
     }
 }
