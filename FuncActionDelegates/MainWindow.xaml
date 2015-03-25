@@ -1,0 +1,83 @@
+﻿<Window x:Class="FuncActionDelegates.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:FuncActionDelegates"
+        Title="Get Func&lt;&gt;-y" Height="490" Width="955"
+        WindowStartupLocation="CenterScreen">
+    <Border x:Name="LayoutRoot" Padding="5"
+            BorderBrush="{StaticResource ApplicationForeground}" BorderThickness="2" 
+            Background="{StaticResource ApplicationBackground}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- List Box -->
+            <ListBox x:Name="PersonListBox"
+                     Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                     Margin="5" SelectionMode="Single" Width="480"
+                     BorderBrush="DarkSlateGray" BorderThickness="1"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ItemTemplate="{StaticResource PersonListTemplate}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+
+            <!-- Selection Panel -->
+            <Border Grid.Column="1" Grid.Row="0" Margin="5" Padding="5"
+                    BorderBrush="{StaticResource ApplicationTextForeground}" BorderThickness="1">
+                <StackPanel>
+                    <Expander x:Name="StringExpander" IsExpanded="True">
+                        <Expander.Header>
+                            <TextBlock Text="String Handling" Style="{StaticResource ApplicationText}" />
+                        </Expander.Header>
+                        <StackPanel>
+                            <RadioButton x:Name="Option1Button" VerticalContentAlignment="Center" Content="Default" IsChecked="True" />
+                            <RadioButton x:Name="Option2Button" VerticalContentAlignment="Center" Content="Last Name" />
+                            <RadioButton x:Name="Option3Button" VerticalContentAlignment="Center" Content="First Name" />
+                            <RadioButton x:Name="Option4Button" VerticalContentAlignment="Center" Content="Full Name" />
+                        </StackPanel>
+                    </Expander>
+                    <Expander x:Name="ActionExpander" IsExpanded="False">
+                        <Expander.Header>
+                            <TextBlock Text="Actions" Style="{StaticResource ApplicationText}" />
+                        </Expander.Header>
+                        <StackPanel>
+                            <CheckBox x:Name="OptionAButton" VerticalContentAlignment="Center" Content="Average Rating" />
+                            <CheckBox x:Name="OptionBButton" VerticalContentAlignment="Center" Content="Earliest Start Date" />
+                            <CheckBox x:Name="OptionCButton" VerticalContentAlignment="Center" Content="Best Commander" />
+                            <CheckBox x:Name="OptionDButton" VerticalContentAlignment="Center" Content="First Letters" />
+                        </StackPanel>
+                    </Expander>
+                </StackPanel>
+            </Border>
+
+            <!-- Fetch Button -->
+            <Button x:Name="ProcessDataButton"
+                    Grid.Column="1" Grid.Row="1"
+                    FontSize="16" Padding="7,3" Margin="5"
+                    Content="Process Data"
+                    Style="{StaticResource GoButtonStyle}"
+                    IsDefault="True"
+                    Click="ProcessDataButton_Click"/>
+
+            <!-- Output Panel -->
+            <Border Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="5" Padding="5"
+                    BorderBrush="{StaticResource ApplicationTextForeground}" BorderThickness="1">
+                <ListBox x:Name="OutputList" FontSize="24">
+
+                </ListBox>
+            </Border>
+
+        </Grid>
+    </Border>
+</Window>
