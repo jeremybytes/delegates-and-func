@@ -16,21 +16,7 @@ namespace HelloWorld
 
         private void NamedDelegate(object sender, RoutedEventArgs e)
         {
-            OutputList.Items.Add("Named Hello");
-        }
-
-        private void AddAnonymous_Click(object sender, RoutedEventArgs e)
-        {
-            ClickMeButton.Click += (s, a) => OutputList.Items.Add("Anonymous Hello");
-            anonymousCount++;
-            AnonymousCount.Text = anonymousCount.ToString();
-        }
-
-        private void RemoveAnonymous_Click(object sender, RoutedEventArgs e)
-        {
-            ClickMeButton.Click -= (s, a) => OutputList.Items.Add("Anonymous Hello");
-            anonymousCount--;
-            AnonymousCount.Text = anonymousCount.ToString();
+            OutputList.Items.Add("Hello from Named Delegate");
         }
 
         private void AddNamed_Click(object sender, RoutedEventArgs e)
@@ -47,6 +33,18 @@ namespace HelloWorld
             NamedCount.Text = namedCount.ToString();
         }
 
+        private void AddAnonymous_Click(object sender, RoutedEventArgs e)
+        {
+            ClickMeButton.Click += (s, a) => OutputList.Items.Add("Hello from Anonymous Delegate");
+            anonymousCount++;
+            AnonymousCount.Text = anonymousCount.ToString();
+        }
 
+        private void RemoveAnonymous_Click(object sender, RoutedEventArgs e)
+        {
+            ClickMeButton.Click -= (s, a) => OutputList.Items.Add("Hello from Anonymous Delegate");
+            anonymousCount--;
+            AnonymousCount.Text = anonymousCount.ToString();
+        }
     }
 }

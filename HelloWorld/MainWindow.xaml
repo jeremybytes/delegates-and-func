@@ -1,32 +1,35 @@
 ﻿<Window x:Class="HelloWorld.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Hello, World!" Height="500" Width="250" 
+        Title="Hello, World!" Height="275" Width="560" 
         WindowStartupLocation="CenterScreen">
     <Grid Background="{StaticResource ApplicationBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Margin="15,5">
-            <TextBlock Text="Anonymous Delegate" Style="{StaticResource ApplicationText}"/>
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="AddAnonymous" Content="Add" Click="AddAnonymous_Click" />
-                <Button x:Name="RemoveAnonymous" Content="Remove" Click="RemoveAnonymous_Click" />
-                <TextBlock x:Name="AnonymousCount" Text="0" Style="{StaticResource CounterText}" />
-            </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="1.4*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Margin="15,5">
             <TextBlock Text="Named Delegate" Style="{StaticResource ApplicationText}"/>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="AddNamed" Content="Add" Click="AddNamed_Click"/>
                 <Button x:Name="RemoveNamed" Content="Remove" Click="RemoveNamed_Click" />
                 <TextBlock x:Name="NamedCount" Text="0" Style="{StaticResource CounterText}" />
             </StackPanel>
+            <TextBlock Text="Anonymous Delegate" Style="{StaticResource ApplicationText}"/>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="AddAnonymous" Content="Add" Click="AddAnonymous_Click" />
+                <Button x:Name="RemoveAnonymous" Content="Remove" Click="RemoveAnonymous_Click" />
+                <TextBlock x:Name="AnonymousCount" Text="0" Style="{StaticResource CounterText}" />
+            </StackPanel>
         </StackPanel>
-        <Button x:Name="ClickMeButton" Grid.Row="1"
+        <Button x:Name="ClickMeButton" Grid.Column="0" Grid.Row="1"
                 Style="{StaticResource GoButtonStyle}"
                 Content="Click Me!" />
-        <ListBox x:Name="OutputList" Grid.Row="2"
+        <ListBox x:Name="OutputList" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
                  FontSize="20">
         </ListBox>
     </Grid>
